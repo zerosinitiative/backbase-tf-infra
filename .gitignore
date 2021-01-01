@@ -1,0 +1,9 @@
+.terraform/
+terraform.tfstate.d/
+terrafrom.tfstate
+*~
+*#
+.#*
+\#*#
+.kitchen/
+.kitchen.local.yml
