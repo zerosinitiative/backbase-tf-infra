@@ -23,6 +23,13 @@ module "dev_machine" {
       cidr_blocks = ["27.5.239.252/32"]
     },
     dev_machine_jenkins = {
+      type        = "ingress"
+      from_port   = 8080
+      to_port     = 8080
+      protocol    = "tcp"
+      cidr_blocks = ["27.5.239.252/32"]
+    },
+     dev_machine_egress = {
       type        = "egress"
       from_port   = 0
       to_port     = 0
