@@ -30,7 +30,14 @@ module "dev_machine" {
       to_port     = 8080
       protocol    = "tcp"
       cidr_blocks = ["27.5.239.252/32"]
-    }
+    },
+    dev_machine_egress = {
+     type        = "egress"
+     from_port   = 0
+     to_port     = 0
+     protocol    = "-1"
+     cidr_blocks = ["0.0.0.0/0"]
+   }
   }
   tags = {
     "Environment" = "Backbase-dev"
@@ -59,9 +66,14 @@ No requirements.
 | topic\_name | The sns topic name for sending notifications through the pipeline for continuous visibility | `string` | n/a | yes |
 | vpc\_id | The VPC ID to create the security group for the development machine | `string` | n/a | yes |
 | custom\_rules | Custom SG rules to apply for the development machine | <pre>map(object({<br>    type        = string,<br>    from_port   = number,<br>    to_port     = number,<br>    protocol    = string,<br>    cidr_blocks = list(string)<br>  }))</pre> | `{}` | no |
+| instance\_profile\_name | The instance profile name to be added to the development machine for admin-access | `string` | `"bb-admin-access-dev-machine"` | no |
+| role\_name | The IAM role name to be added to the development machine for admin-access as part of instance profile | `string` | `"bb-admin-access"` | no |
 | tags | The tags to associate with all resources created through this module | `map(any)` | `{}` | no |
 
 ## Outputs
 
-No output.
+| Name | Description |
+|------|-------------|
+| dynamodb\_table\_name | n/a |
+| s3\_bucket\_name | n/a |
 
