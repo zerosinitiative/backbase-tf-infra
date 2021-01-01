@@ -31,6 +31,7 @@ module "dev_machine" {
     }
   }
   tags = {
+    "Name"        = "Development"
     "Environment" = "Backbase-dev"
   }
 }
