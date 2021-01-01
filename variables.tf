@@ -18,6 +18,18 @@ variable "ecr_repo_name" {
   type        = string
 }
 
+variable "instance_profile_name" {
+  description = "The instance profile name to be added to the development machine for admin-access"
+  type        = string
+  default     = "bb-admin-access-dev-machine"
+}
+
+variable "role_name" {
+  description = "The IAM role name to be added to the development machine for admin-access as part of instance profile"
+  type        = string
+  default     = "bb-admin-access"
+}
+
 variable "vpc_id" {
   description = "The VPC ID to create the security group for the development machine"
   type        = string
